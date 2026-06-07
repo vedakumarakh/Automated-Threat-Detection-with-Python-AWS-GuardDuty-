@@ -1,0 +1,43 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "GuardDutyReadAccess",
+      "Effect": "Allow",
+      "Action": [
+        "guardduty:GetFindings",
+        "guardduty:ListFindings",
+        "guardduty:GetDetector"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EC2IsolationAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeSecurityGroups",
+        "ec2:ModifyInstanceAttribute"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "SNSPublishAccess",
+      "Effect": "Allow",
+      "Action": [
+        "sns:Publish"
+      ],
+      "Resource": "arn:aws:sns:*:*:guardduty-alerts"
+    },
+    {
+      "Sid": "CloudWatchLogsAccess",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:*"
+    }
+  ]
+}

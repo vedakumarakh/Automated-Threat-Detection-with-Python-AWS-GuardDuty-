@@ -1,0 +1,58 @@
+{
+  "version": "0",
+  "id": "cd2d702c-ab3d-4567-b7da-3e7f4a96d12e",
+  "source": "aws.guardduty",
+  "account": "123456789012",
+  "time": "2026-01-15T12:00:00Z",
+  "region": "us-east-1",
+  "detail-type": "GuardDuty Finding",
+  "detail": {
+    "accountId": "123456789012",
+    "region": "us-east-1",
+    "id": "abc123def456finding789",
+    "type": "UnauthorizedAccess:EC2/SSHBruteForce",
+    "severity": 7.8,
+    "title": "i-0abc1234567890def is performing SSH brute force attacks",
+    "description": "EC2 instance i-0abc1234567890def is performing SSH brute force attacks against 203.0.113.10. Brute force attacks are used to gain unauthorized access to your instance by guessing the SSH password.",
+    "createdAt": "2026-01-15T11:58:00Z",
+    "updatedAt": "2026-01-15T12:00:00Z",
+    "resource": {
+      "resourceType": "Instance",
+      "instanceDetails": {
+        "instanceId": "i-0abc1234567890def",
+        "instanceType": "t2.micro",
+        "imageId": "ami-0c02fb55956c7d316",
+        "launchTime": "2026-01-10T08:00:00Z",
+        "networkInterfaces": [
+          {
+            "privateIpAddress": "10.0.1.25",
+            "publicIp": "54.1.2.3",
+            "subnetId": "subnet-0abc123",
+            "vpcId": "vpc-0def456"
+          }
+        ],
+        "tags": [
+          { "key": "Name", "value": "web-server-prod" },
+          { "key": "Environment", "value": "production" }
+        ]
+      }
+    },
+    "service": {
+      "action": {
+        "actionType": "NETWORK_CONNECTION",
+        "networkConnectionAction": {
+          "connectionDirection": "OUTBOUND",
+          "remoteIpDetails": {
+            "ipAddressV4": "203.0.113.10",
+            "country": { "countryName": "Unknown" }
+          },
+          "remotePortDetails": { "port": 22, "portName": "SSH" },
+          "protocol": "TCP"
+        }
+      },
+      "count": 42,
+      "eventFirstSeen": "2026-01-15T11:30:00Z",
+      "eventLastSeen": "2026-01-15T12:00:00Z"
+    }
+  }
+}
